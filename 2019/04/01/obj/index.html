@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#弱符号与强符号"><span class="toc-text">弱符号与强符号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#弱引用和强引用"><span class="toc-text">弱引用和强引用</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#弱符号与强符号"><span class="toc-text">弱符号与强符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弱引用和强引用"><span class="toc-text">弱引用和强引用</span></a></li></ol>
 </div>
     
 </div>
@@ -137,12 +137,12 @@
 
     </div>
     <div class="post-content ">
-        <h1 id="弱符号与强符号"><a href="#弱符号与强符号" class="headerlink" title="弱符号与强符号"></a>弱符号与强符号</h1><ul>
+        <h2 id="弱符号与强符号"><a href="#弱符号与强符号" class="headerlink" title="弱符号与强符号"></a>弱符号与强符号</h2><ul>
 <li>编译器默认函数和初始化了的全局变量为强符号，未初始化的全局变量为弱符号<blockquote>
 <p>规则一：不允许强符号多次定义；如果有多个强符号，则链接器报符号重复定义错误。<br>规则二：如果一个符号在某个目标文件中是强符号，在其他文件中都是弱符号，那么选择强符号。<br>规则三：如果一个符号在所有目标文件中都是弱符号，那么选择其中占用空间最大的一个。  </p>
 </blockquote>
 </li>
-<li>尽量不要使用多个不用类型的弱符号，否则容易导致很难发现的程序错误。  <h1 id="弱引用和强引用"><a href="#弱引用和强引用" class="headerlink" title="弱引用和强引用"></a>弱引用和强引用</h1></li>
+<li>尽量不要使用多个不用类型的弱符号，否则容易导致很难发现的程序错误。  <h2 id="弱引用和强引用"><a href="#弱引用和强引用" class="headerlink" title="弱引用和强引用"></a>弱引用和强引用</h2></li>
 <li>强引用：链接器找不到该符号的定义，就用报符号未定义错误。</li>
 <li>弱引用：如果引用符号未被定义，链接器不报错。链接器默认未定义的弱引用为0或者一个特殊值，以便程序代码能够识别。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//gcc不会报链接错误，但是会发生运行错误。因为foo函数的地址为0,会发生非法访问。</span><br><span class="line">__attribute__ ((weakref)) void foo();</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    foo();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
