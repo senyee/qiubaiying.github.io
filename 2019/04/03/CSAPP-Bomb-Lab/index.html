@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        CSAPP Bomb Lab - Seny&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Weak chicken </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/favicon.ico">
+        </div>
+        <div class="name">
+            <i>Seny</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-序"><span class="toc-text">1.序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-汇编入门"><span class="toc-text">2.汇编入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#OBJDUMP"><span class="toc-text">OBJDUMP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GDB"><span class="toc-text">GDB</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-phase-1"><span class="toc-text">3.phase_1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-phase-2"><span class="toc-text">4.phase_2</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Weak chicken </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        CSAPP Bomb Lab
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-04-03 22:32:09</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#CSAPP" title="CSAPP">CSAPP</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#汇编" title="汇编">汇编</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content no-indent">
+        <h3 id="1-序"><a href="#1-序" class="headerlink" title="1.序"></a>1.序</h3><p>&ensp;&ensp;&ensp;&ensp;CSAPP这本书买好久了，但一直都没看过，最近翻出来看看，做做里面的实验题，做个笔记。第一实验室Bomb，大概意思就是破解密码。输入错误就会BOOM！！目标就是通过反汇编调试找到密码。看到汇编就想到我本科时60几分的微机原理，惭愧惭愧。  </p>
+<h3 id="2-汇编入门"><a href="#2-汇编入门" class="headerlink" title="2.汇编入门"></a>2.汇编入门</h3><p>&ensp;&ensp;&ensp;&ensp;这个实验需要用到基本的汇编，GDB反汇编调试，最好对ELF格式有点了解。用到的工具gdb和objdump。</p>
+<p>&ensp;&ensp;&ensp;&ensp;这里先记一些常用的汇编指令</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">结果</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">mov %rbx, %rdx</td>
+<td style="text-align:center">rdx = rbx</td>
+<td style="text-align:center">这里注意与lea的区别</td>
+</tr>
+<tr>
+<td style="text-align:center">add %rbx, %rdx</td>
+<td style="text-align:center">rdx += rbx</td>
+</tr>
+<tr>
+<td style="text-align:center">sub %rbx, %rdx</td>
+<td style="text-align:center">rdx -= rbx</td>
+</tr>
+<tr>
+<td style="text-align:center">mul %rbx, %rdx</td>
+<td style="text-align:center">rdx *= rbx</td>
+</tr>
+<tr>
+<td style="text-align:center">lea b(%rdx, %rbx, a) %rdx</td>
+<td style="text-align:center">rdx = rdx + a*rbx + b</td>
+<td style="text-align:center">lea取有效地址，括号代表寻址</td>
+</tr>
+<tr>
+<td style="text-align:center">cmp %rbx, %rdx</td>
+<td style="text-align:center">rdx - rbx</td>
+</tr>
+<tr>
+<td style="text-align:center">test %rbx, %rdx</td>
+<td style="text-align:center">rdx &amp; rbx</td>
+</tr>
+</tbody>
+</table>
+<p>&ensp;&ensp;&ensp;&ensp;通用寄存器  </p>
+<blockquote>
+<p>%rax(%eax) 用于做累加<br>%rcx(%ecx) 用于计数<br>%rdx(%edx) 用于保存数据<br>%rbx(%ebx) 用于做内存查找的基础地址<br>%rsi(%esi) 用于保存源索引值<br>%rdi(%edi) 用于保存目标索引值  </p>
+</blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;寄存器中存储着当前正在执行的程序的相关信息：</p>
+<blockquote>
+<p>临时数据存放在 (%rax, …)<br>运行时栈的地址存储在 (%rsp) 中<br>目前的代码控制点存储在 (%rip, …) 中<br>目前测试的状态放在 CF, ZF, SF, OF 中  </p>
+</blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;标识位（copy from <a href="https://wdxtub.com/2016/04/16/thin-csapp-2/" target="_blank" rel="noopener">不周山</a>）</p>
+<blockquote>
+<p>CF: Carry Flag (针对无符号数)<br>ZF: Zero Flag<br>SF: Sign Flag (针对有符号数)<br>OF: Overflow Flag (针对有符号数)  </p>
+</blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;可以看到以上这四个标识位，表示四种不同的状态，举个例子，假如我们有一条诸如 t = a + b 的语句，汇编之后假设用的是 addq Src, Dest，那么根据这个操作结果的不同，会相应设置上面提到的四个标识位，而因为这个是执行类似操作时顺带尽心设置的，称为隐式设置，例如：</p>
+<blockquote>
+<p>1.如果两个数相加，在最高位还需要进位（也就是溢出了），那么 CF 标识位就会被设置<br>2.如果 t 等于 0，那么 ZF 标识位会被设置<br>3.如果 t 小于 0，那么 SF 标识位会被设置<br>4.如果 2’s complement 溢出，那么 OF 标识位会被设置为 1（溢出的情况是 (a&gt;0 &amp;&amp; b &gt; 0 &amp;&amp; t &lt;0) || (a&lt;0 &amp;&amp; b<0 && t>=0)）  </0></p>
+</blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;这就发现了，其实这四个条件代码，是用来标记上一条命令的结果的各种可能的，是自动会进行设置的。注意，使用 leaq 指令的话不会进行设置。</p>
+<p>&ensp;&ensp;&ensp;&ensp;除了隐形设置，还可以显式进行设置，具体的方法是使用 cmpq 指令，这里的 q 指的是 64 位的地址。具体来说 cmpq Src2(b), Src1(a) 等同于计算 a-b（注意 a b 顺序是颠倒的），然后利用 a-b 的结果来对应进行条件代码的设置：</p>
+<blockquote>
+<p>如果在最高位还需要进位（也就是溢出了），那么 CF 标识位就会被设置<br>a 和 b 相等时，也就是 a-b 等于零时，ZF 标识位会被设置<br>如果 a &lt; b，也就是 (a-b)<0 时，那么 sf 标识位会被设置 如果 2’s complement 溢出，那么 of 标识位会被设置（溢出的情况是 (a>0 &amp;&amp; b &gt; 0 &amp;&amp; t &lt;0) || (a&lt;0 &amp;&amp; b<0 && t>=0)）  </0></0></p>
+</blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;另一种进行显式设置的方法是使用 testq 指令，具体来说 testq Src2&gt;(b), Src1(a) 等同于计算 a&amp;b（注意 a b 顺序是颠倒的），然后利用 a-b 的结果来对应进行条件代码的设置，通常来说会把其中一个操作数作&gt;为 mask：</p>
+<blockquote>
+<p>当 a&amp;b == 0 时，ZF 标识位会被设置<br>当 a&amp;b &lt; 0 时，SF 标识位会被设置  </p>
+</blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;有了这四个条件码，就可以通过不同的组合方式，来产生不同的条件判断。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">跳转指令</th>
+<th style="text-align:center">跳转条件</th>
+<th style="text-align:center">跳转指令</th>
+<th style="text-align:center">跳转条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">jmp</td>
+<td style="text-align:center">Always jump</td>
+<td style="text-align:center">ja</td>
+<td style="text-align:center">Jump if above(unsigned &gt;)</td>
+</tr>
+<tr>
+<td style="text-align:center">je/jz</td>
+<td style="text-align:center">Jump if eq/zero</td>
+<td style="text-align:center">jae</td>
+<td style="text-align:center">Jump if above / equal</td>
+</tr>
+<tr>
+<td style="text-align:center">jne/jnz</td>
+<td style="text-align:center">Jump if !eq/!zero</td>
+<td style="text-align:center">jb</td>
+<td style="text-align:center">Jump if below(unsigned &lt;)</td>
+</tr>
+<tr>
+<td style="text-align:center">jg</td>
+<td style="text-align:center">Jump if greater</td>
+<td style="text-align:center">jbe</td>
+<td style="text-align:center">Jump if below / equal</td>
+</tr>
+<tr>
+<td style="text-align:center">jge</td>
+<td style="text-align:center">Jump if greater/eq</td>
+<td style="text-align:center">js</td>
+<td style="text-align:center">Jump if sign bits is 1(neg)</td>
+</tr>
+<tr>
+<td style="text-align:center">jl</td>
+<td style="text-align:center">Jump if less</td>
+<td style="text-align:center">jns</td>
+<td style="text-align:center">Jump if sign bit is 0(pos)</td>
+</tr>
+<tr>
+<td style="text-align:center">jle</td>
+<td style="text-align:center">Jump if less / eq</td>
+</tr>
+</tbody>
+</table>
+<h4 id="OBJDUMP"><a href="#OBJDUMP" class="headerlink" title="OBJDUMP"></a>OBJDUMP</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#-s 将所有段的内容以<span class="number">16</span>进制的方式打印出来</span><br><span class="line">#-d 可以将所有包含指令的段反汇编</span><br><span class="line">#-x 显示更多段信息</span><br><span class="line">objdump -x -d -s bomb &gt; bomb.txt</span><br></pre></td></tr></table></figure>
+<h4 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">help</span><br><span class="line"># 设置断点</span><br><span class="line">b 函数名</span><br><span class="line">b *地址</span><br><span class="line"></span><br><span class="line"># 开始运行</span><br><span class="line">run</span><br><span class="line"></span><br><span class="line"># 检查汇编 会给出对应的代码的汇编</span><br><span class="line">disas </span><br><span class="line"></span><br><span class="line"># 查看寄存器内容</span><br><span class="line">info registers</span><br><span class="line"></span><br><span class="line"># 打印指定寄存器</span><br><span class="line">p $rsp</span><br><span class="line"></span><br><span class="line"># 每步执行</span><br><span class="line">stepi</span><br><span class="line"></span><br><span class="line"># 检查寄存器或某个地址</span><br><span class="line">x/<span class="number">4</span>wd $rsp</span><br></pre></td></tr></table></figure>
+<h3 id="3-phase-1"><a href="#3-phase-1" class="headerlink" title="3.phase_1"></a>3.phase_1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objdump -x -d -s bomb &gt; bomb.txt</span><br></pre></td></tr></table></figure>
+<p>&ensp;&ensp;&ensp;&ensp;思路就是要找到校验密码的地方，通常的做法是：密码输错后都会打印错误提示字符串,在bomb这个程序里面就是<code>&quot;BOOM&quot;</code>,找到这个字符串的地址，再找引用这个字符串的地址，再查找跳转到这个地址的指令，再看指令跳转的条件。这样就能找到校验密码的地方。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#字符串常量一半存储在.rodata段</span><br><span class="line">$cat bomb.txt | grep -n BOOM</span><br><span class="line">870: 4025a0 730a000a 424f4f4d 21212100 54686520  s...BOOM!!!.The</span><br></pre></td></tr></table></figure>
+<p>可以看出BOOM的地址在<code>0x4025a0</code>附近,查找引用这个地址的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cat bomb.txt | grep -n 4025a</span><br><span class="line"></span><br><span class="line">870: 4025a0 730a000a 424f4f4d 21212100 54686520  s...BOOM!!!.The </span><br><span class="line">2210:  40143e:    bf a3 25 40 00           mov    $0x4025a3,%edi</span><br><span class="line">2212:  401448:    bf ac 25 40 00           mov    $0x4025ac,%edi</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2208 000000000040143a &lt;explode_bomb&gt;:</span><br><span class="line">2209   40143a:   48 83 ec 08     sub    $0x8,%rsp</span><br><span class="line">2210   40143e:   bf a3 25 40 00  mov    $0x4025a3,%edi                    </span><br><span class="line">2211   401443:   e8 c8 f6 ff ff  callq  400b10 &lt;puts@plt&gt;</span><br><span class="line">2212   401448:   bf ac 25 40 00  mov    $0x4025ac,%edi</span><br><span class="line">2213   40144d:   e8 be f6 ff ff  callq  400b10 &lt;puts@plt&gt;</span><br><span class="line">2214   401452:   bf 08 00 00 00  mov    $0x8,%edi</span><br><span class="line">2215   401457:   e8 c4 f7 ff ff  callq  400c20 &lt;exit@plt&gt;</span><br></pre></td></tr></table></figure>
+<p>&ensp;&ensp;&ensp;&ensp;可以看到这里就是爆炸地方。然后再找引用<code>&lt;explode_bomb&gt;</code>的位置，就是校验密码的位置了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ cat bomb.txt | grep -n &quot;&lt;explode_bomb&gt;&quot;</span><br><span class="line"></span><br><span class="line">1765:  400ef2:    e8 43 05 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1777:  400f10:    e8 25 05 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1783:  400f20:    e8 15 05 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1805:  400f65:    e8 d0 04 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1824:  400fad:    e8 88 04 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1830:  400fc4:    e8 71 04 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1869:  401035:    e8 00 04 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1878:  401058:    e8 dd 03 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1893:  401084:    e8 b1 03 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1910:  4010c6:    e8 6f 03 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1941:  401123:    e8 12 03 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1950:  401140:    e8 f5 02 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">2001:  4011e9:    e8 4c 02 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">2046:  401267:    e8 ce 01 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">2052:  40127d:    e8 b8 01 00 00           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">2208:000000000040143a &lt;explode_bomb&gt;:</span><br><span class="line">2232:  401494:    e8 a1 ff ff ff           callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">2291:  401595:    e8 a0 fe ff ff           callq  40143a &lt;explode_bomb&gt;</span><br></pre></td></tr></table></figure></p>
+<p>首先看第一个引用的位置<code>1765行</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1759 0000000000400ee0 &lt;phase_1&gt;:</span><br><span class="line">1760   400ee0:   48 83 ec 08             sub    $0x8,%rsp</span><br><span class="line">1761   400ee4:   be 00 24 40 00          mov    $0x402400,%esi</span><br><span class="line">1762   400ee9:   e8 4a 04 00 00          callq  401338 &lt;strings_not_equal&gt;</span><br><span class="line">1763   400eee:   85 c0                   test   %eax,%eax</span><br><span class="line">1764   400ef0:   74 05                   je     400ef7 &lt;phase_1+0x17&gt;</span><br><span class="line">1765   400ef2:   e8 43 05 00 00          callq  40143a &lt;explode_bomb&gt;</span><br><span class="line">1766   400ef7:   48 83 c4 08             add    $0x8,%rsp</span><br><span class="line">1767   400efb:   c3                      retq</span><br></pre></td></tr></table></figure></p>
+<p>这里就是校验密码的位置。这里从函数名大概可以猜下是第一阶段，我们继续确认一下。查找引用<code>&lt;phase_1&gt;</code>的地方<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat bomb.txt | grep -n &quot;&lt;phase_1&gt;&quot;</span><br><span class="line"></span><br><span class="line">1714:  400e3a:    e8 a1 00 00 00           callq  400ee0 &lt;phase_1&gt;</span><br></pre></td></tr></table></figure></p>
+<p>查看<code>1714行</code>附近，就找到了程序的入口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1677 0000000000400da0 &lt;main&gt;:</span><br><span class="line">1678   400da0:   53                      push   %rbx</span><br><span class="line">...</span><br><span class="line">1710   400e28:   bf 78 23 40 00          mov    $0x402378,%edi</span><br><span class="line">1711   400e2d:   e8 de fc ff ff          callq  400b10 &lt;puts@plt&gt;</span><br><span class="line">1712   400e32:   e8 67 06 00 00          callq  40149e &lt;read_line&gt;</span><br><span class="line">1713   400e37:   48 89 c7                mov    %rax,%rdi</span><br><span class="line">1714   400e3a:   e8 a1 00 00 00          callq  400ee0 &lt;phase_1&gt;</span><br><span class="line">1715   400e3f:   e8 80 07 00 00          callq  4015c4 &lt;phase_defused&gt;</span><br><span class="line">1716   400e44:   bf a8 23 40 00          mov    $0x4023a8,%edi</span><br><span class="line">1717   400e49:   e8 c2 fc ff ff          callq  400b10 &lt;puts@plt&gt;</span><br><span class="line">1718   400e4e:   e8 4b 06 00 00          callq  40149e &lt;read_line&gt;</span><br><span class="line">1719   400e53:   48 89 c7                mov    %rax,%rdi</span><br><span class="line">1720   400e56:   e8 a1 00 00 00          callq  400efc &lt;phase_2&gt;</span><br></pre></td></tr></table></figure></p>
+<p>到这里，我们就可以确认<code>&lt;phase_1&gt;</code>就是我们要分析的地方。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1759 0000000000400ee0 &lt;phase_1&gt;:</span><br><span class="line">1760   400ee0:   48 83 ec 08             sub    $0x8,%rsp</span><br><span class="line">1761   400ee4:   be 00 24 40 00          mov    $0x402400,%esi</span><br></pre></td></tr></table></figure>
+<p>这里首先开栈，然后到0x402400寻址，字符串通常都是存放在.rodata段的，我们不妨看一下这个地址存的什么。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">844  402400 426f7264 65722072 656c6174 696f6e73  Border relations</span><br><span class="line">845  402410 20776974 68204361 6e616461 20686176   with Canada hav</span><br><span class="line">846  402420 65206e65 76657220 6265656e 20626574  e never been bet</span><br><span class="line">847  402430 7465722e 00000000 576f7721 20596f75  ter.....Wow! You</span><br><span class="line">848  402440 27766520 64656675 73656420 74686520  &apos;ve defused the</span><br><span class="line">849  402450 73656372 65742073 74616765 2100666c  secret stage!.fl</span><br><span class="line">850  402460 79657273 00000000 00000000 00000000  yers............</span><br></pre></td></tr></table></figure></p>
+<p>这里确实存了一组看起来是密码的字符串，到底是不是，调试一下就知道了。在<code>&lt;phase_1&gt;</code>处下断点，单步调试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(gdb) disas</span><br><span class="line">Dump of assembler code for function phase_1:</span><br><span class="line">    0x0000000000400ee0 &lt;+0&gt;:     sub    $0x8,%rsp</span><br><span class="line">    0x0000000000400ee4 &lt;+4&gt;:     mov    $0x402400,%esi</span><br><span class="line">=&gt;  0x0000000000400ee9 &lt;+9&gt;:     callq  0x401338 &lt;strings_not_equal&gt;</span><br><span class="line">    0x0000000000400eee &lt;+14&gt;:    test   %eax,%eax</span><br><span class="line">    0x0000000000400ef0 &lt;+16&gt;:    je     0x400ef7 &lt;phase_1+23&gt;</span><br><span class="line">    0x0000000000400ef2 &lt;+18&gt;:    callq  0x40143a &lt;explode_bomb&gt;</span><br><span class="line">    0x0000000000400ef7 &lt;+23&gt;:    add    $0x8,%rsp</span><br><span class="line">    0x0000000000400efb &lt;+27&gt;:    retq   </span><br><span class="line">End of assembler dump.</span><br></pre></td></tr></table></figure></p>
+<p>查看%esi的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(gdb) x/s $esi</span><br><span class="line">0x402400:    &quot;Border relations with Canada have never been better.&quot;</span><br></pre></td></tr></table></figure></p>
+<p>可以继续分析是哪几个寄存器在比较，但是这里我们可以试下，这个到底是不是我们找的密码呢。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Phase 1 defused. How about the next one?</span><br></pre></td></tr></table></figure></p>
+<p>果然就是我们要找的密码。</p>
+<h3 id="4-phase-2"><a href="#4-phase-2" class="headerlink" title="4.phase_2"></a>4.phase_2</h3>
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
