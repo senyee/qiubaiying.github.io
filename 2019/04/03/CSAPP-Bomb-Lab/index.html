@@ -188,7 +188,138 @@
 <blockquote>
 <p>%rax(%eax) 用于做累加<br>%rcx(%ecx) 用于计数<br>%rdx(%edx) 用于保存数据<br>%rbx(%ebx) 用于做内存查找的基础地址<br>%rsi(%esi) 用于保存源索引值<br>%rdi(%edi) 用于保存目标索引值  </p>
 </blockquote>
-<h4 id="Calling-convention"><a href="#Calling-convention" class="headerlink" title="Calling convention"></a>Calling convention</h4><p>这里附上x64 ABI中的calling convention<br>Register | Usage | Preserved across function calls<br>:- | :- | :-:<br>%rax | temporary register; with variable arguments passes information about the number of vector registers used; 1st return register | No<br>%rbx | callee-saved register | Yes<br>%rcx | used to pass 4th integer argument to functions | No<br>%rdx | used to pass 3rd argument to functions; 2nd return register | No<br>%rsp | stack pointer | Yes<br>%rbp | callee-saved register; optionally used as frame pointer | Yes<br>%rsi | used to pass 2nd argument to functions | No<br>%rdi | used to pass 1st argument to functions | No<br>%r8  | used to pass 5th argument to functions | No<br>%r9  | used to pass 6th argument to functions | No<br>%r10 | temporary register, used for passing a function’s static chain pointer | No<br>%r11 | temporary register | No<br>%r12-r14 | callee-saved registers | Yes<br>%r15 | callee-saved register; optionally used as GOT base pointer | Yes<br>%xmm0–%xmm1  | used to pass and return floating point arguments | No<br>%xmm2–%xmm7  | used to pass floating point arguments | No<br>%xmm8–%xmm15 | temporary registers | No<br>%mmx0–%mmx7  | temporary registers | No<br>%st0,%st1 | temporary registers; used to return long double arguments | No<br>%st2–%st7 | temporary registers | No<br>%fs | Reserved for system (as thread specific data register) | No<br>mxcsr  | SSE2 control and status word | partial<br>x87 SW | x87 status word | No<br>x87 CW | x87 control word | Yes</p>
+<h4 id="Calling-convention"><a href="#Calling-convention" class="headerlink" title="Calling convention"></a>Calling convention</h4><p>这里附上x64 ABI中的calling convention</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Register</th>
+<th style="text-align:left">Usage</th>
+<th style="text-align:center">Preserved across function calls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">%rax</td>
+<td style="text-align:left">temporary register; with variable arguments passes information about the number of vector registers used; 1st return register</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%rbx</td>
+<td style="text-align:left">callee-saved register</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left">%rcx</td>
+<td style="text-align:left">used to pass 4th integer argument to functions</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%rdx</td>
+<td style="text-align:left">used to pass 3rd argument to functions; 2nd return register</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%rsp</td>
+<td style="text-align:left">stack pointer</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left">%rbp</td>
+<td style="text-align:left">callee-saved register; optionally used as frame pointer</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left">%rsi</td>
+<td style="text-align:left">used to pass 2nd argument to functions</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%rdi</td>
+<td style="text-align:left">used to pass 1st argument to functions</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%r8</td>
+<td style="text-align:left">used to pass 5th argument to functions</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%r9</td>
+<td style="text-align:left">used to pass 6th argument to functions</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%r10</td>
+<td style="text-align:left">temporary register, used for passing a function’s static chain pointer</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%r11</td>
+<td style="text-align:left">temporary register</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%r12-r14</td>
+<td style="text-align:left">callee-saved registers</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left">%r15</td>
+<td style="text-align:left">callee-saved register; optionally used as GOT base pointer</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left">%xmm0–%xmm1</td>
+<td style="text-align:left">used to pass and return floating point arguments</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%xmm2–%xmm7</td>
+<td style="text-align:left">used to pass floating point arguments</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%xmm8–%xmm15</td>
+<td style="text-align:left">temporary registers</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%mmx0–%mmx7</td>
+<td style="text-align:left">temporary registers</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%st0,%st1</td>
+<td style="text-align:left">temporary registers; used to return long double arguments</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%st2–%st7</td>
+<td style="text-align:left">temporary registers</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">%fs</td>
+<td style="text-align:left">Reserved for system (as thread specific data register)</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">mxcsr</td>
+<td style="text-align:left">SSE2 control and status word</td>
+<td style="text-align:center">partial</td>
+</tr>
+<tr>
+<td style="text-align:left">x87 SW</td>
+<td style="text-align:left">x87 status word</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">x87 CW</td>
+<td style="text-align:left">x87 control word</td>
+<td style="text-align:center">Yes</td>
+</tr>
+</tbody>
+</table>
 <p>&ensp;&ensp;&ensp;&ensp;寄存器中存储着当前正在执行的程序的相关信息：</p>
 <blockquote>
 <p>临时数据存放在 (%rax, …)<br>运行时栈的地址存储在 (%rsp) 中<br>目前的代码控制点存储在 (%rip, …) 中<br>目前测试的状态放在 CF, ZF, SF, OF 中  </p>
