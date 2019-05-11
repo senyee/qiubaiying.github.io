@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、滑动窗口"><span class="toc-text">一、滑动窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、MTU"><span class="toc-text">二、MTU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、拥塞控制"><span class="toc-text">三、拥塞控制</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、滑动窗口"><span class="toc-text">一、滑动窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、MTU"><span class="toc-text">二、MTU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、拥塞控制"><span class="toc-text">三、拥塞控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-慢启动"><span class="toc-text">1.慢启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-拥塞避免"><span class="toc-text">2.拥塞避免</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-拥塞状态："><span class="toc-text">3.拥塞状态：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-拥塞控制算法"><span class="toc-text">4.拥塞控制算法</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -148,11 +148,17 @@
 <p>发送缓冲区里的内容有：1已发送且受到ack，2已发送未收到ack，3未发送的。</p>
 <h3 id="二、MTU"><a href="#二、MTU" class="headerlink" title="二、MTU"></a>二、MTU</h3><p>MTU: 由数据链路层规定，最大为1500;  </p>
 <p>MSS: 最大传输分节(Max Segment Size)，1460=MTU - ip头 - tcp头。建立TCP连接的时候，是由双方去协定的。服务器有一个SMSS,客户端CMSS,<code>MSS = MIN(SMSS, CMSS)</code>;<br>RFC文档里有规定过IP包最小为576个字节。所以，有很多设备，MSS=536个字节。</p>
-<h3 id="三、拥塞控制"><a href="#三、拥塞控制" class="headerlink" title="三、拥塞控制"></a>三、拥塞控制</h3><p>拥塞窗口(Congestion window)<br>探测最大的cwnd:<br>1.慢启动<br>cwnd = 1MMS 指数增长到阈值thresh<br>2.拥塞避免<br>cwnd = cwnd + 1MMS</p>
-<p>3.拥塞状态：<br>RTT(Round Trip Time)<br>丢包定时器  </p>
-<p>1)如果重发丢的包，依然没有收到ack;或者超时<br><code>RENO</code><br>a.thresh = cwnd / 2<br>b.cwnd = 1MSS。<br>c.慢启动  </p>
-<p>2)3次收到同样的ack<br><code>NEW RENO</code><br>a.thresh = cwnd / 2<br>b.cwnd = cwnd / 2<br>c.快速恢复阶段</p>
-<p>4.拥塞控制算法<br>CUBIC， SACK<br>google的 <code>BBR</code>算法：linux4.9版本之后，linux内核采纳了该算法  </p>
+<h3 id="三、拥塞控制"><a href="#三、拥塞控制" class="headerlink" title="三、拥塞控制"></a>三、拥塞控制</h3><p>拥塞窗口(Congestion window)<br>探测最大的cwnd:  </p>
+<h4 id="1-慢启动"><a href="#1-慢启动" class="headerlink" title="1.慢启动"></a>1.慢启动</h4><p>cwnd = 1MMS 指数增长到阈值thresh</p>
+<h4 id="2-拥塞避免"><a href="#2-拥塞避免" class="headerlink" title="2.拥塞避免"></a>2.拥塞避免</h4><p>cwnd = cwnd + 1MMS</p>
+<h4 id="3-拥塞状态："><a href="#3-拥塞状态：" class="headerlink" title="3.拥塞状态："></a>3.拥塞状态：</h4><p>RTT(Round Trip Time)<br>丢包定时器  </p>
+<ul>
+<li><p>1)如果重发丢的包，依然没有收到ack;或者超时<br><code>RENO</code><br>a、thresh = cwnd / 2<br>b、cwnd = 1MSS。<br>c、慢启动  </p>
+</li>
+<li><p>2)3次收到同样的ack<br><code>NEW RENO</code><br>a、thresh = cwnd / 2<br>b、cwnd = cwnd / 2<br>c、快速恢复阶段</p>
+</li>
+</ul>
+<h4 id="4-拥塞控制算法"><a href="#4-拥塞控制算法" class="headerlink" title="4.拥塞控制算法"></a>4.拥塞控制算法</h4><p>CUBIC， SACK<br>google的 <code>BBR</code>算法：linux4.9版本之后，linux内核采纳了该算法  </p>
 
         
         <br>
