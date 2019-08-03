@@ -6,17 +6,14 @@
   <meta name="keywords" content>
   <meta name="description" content="About | Seny">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="我的一点记录">
 <meta property="og:type" content="website">
-<meta property="og:title" content="About">
-<meta property="og:url" content="http://senyee.top/about/index.html">
+<meta property="og:title" content="gallery">
+<meta property="og:url" content="http://senyee.top/gallery/index.html">
 <meta property="og:site_name" content="Seny">
-<meta property="og:description" content="我的一点记录">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-31T16:40:22.396Z">
+<meta property="og:updated_time" content="2019-03-31T14:39:52.139Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="我的一点记录">
+<meta name="twitter:title" content="gallery">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -109,17 +106,11 @@
 
 
 
+<a class="more-menus">更多菜单</a>
+
 
 <ul>
     <li><div class="all active">全部文章<small>(8)</small></div></li>
-    
-        
-            
-            <li><div data-rel="网络">网络<small>(1)</small></div>
-                
-            </li>
-            
-        
     
         
             
@@ -147,6 +138,14 @@
     
         
             
+            <li><div data-rel="网络">网络<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
             <li><div data-rel="CSAPP">CSAPP<small>(1)</small></div>
                 
             </li>
@@ -157,6 +156,8 @@
 <div class="left-bottom">
     <div class="menus">
     
+    
+    <a class="dynamic-menu site_url" href="/photo">相册</a>
     
     
     
@@ -198,14 +199,6 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">tcp</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">网络</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color3">链接</a>
     </li>
     
@@ -215,6 +208,14 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">算法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">tcp</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">网络</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -235,14 +236,14 @@
     
     <nav id="title-list-nav">
         
-        <a class="网络 " href="/2019/05/11/tcp-flow-control/" data-tag="tcp,网络" data-author>
-            <span class="post-title" title="tcp flow control">tcp flow control</span>
-            <span class="post-date" title="2019-05-11 18:51:43">2019/05/11</span>
-        </a>
-        
         <a class="程序基础 " href="/2019/05/18/memory-pool/" data-tag data-author>
             <span class="post-title" title="memory pool">memory pool</span>
             <span class="post-date" title="2019-05-18 21:03:24">2019/05/18</span>
+        </a>
+        
+        <a class="程序基础 " href="/2019/05/18/thread-pool/" data-tag data-author>
+            <span class="post-title" title="thread pool">thread pool</span>
+            <span class="post-date" title="2019-05-18 21:01:36">2019/05/18</span>
         </a>
         
         <a class href="/2019/03/31/hello-world/" data-tag data-author>
@@ -255,9 +256,9 @@
             <span class="post-date" title="2019-04-01 01:58:20">2019/04/01</span>
         </a>
         
-        <a class="程序基础 " href="/2019/05/18/thread-pool/" data-tag data-author>
-            <span class="post-title" title="thread pool">thread pool</span>
-            <span class="post-date" title="2019-05-18 21:01:36">2019/05/18</span>
+        <a class="程序基础 " href="/2019/05/15/多线程/" data-tag data-author>
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2019-05-15 22:12:02">2019/05/15</span>
         </a>
         
         <a class="练习 " href="/2019/04/20/字符串排序/" data-tag="字符串,算法" data-author>
@@ -265,9 +266,9 @@
             <span class="post-date" title="2019-04-20 02:03:13">2019/04/20</span>
         </a>
         
-        <a class="程序基础 " href="/2019/05/15/多线程/" data-tag data-author>
-            <span class="post-title" title="多线程">多线程</span>
-            <span class="post-date" title="2019-05-15 22:12:02">2019/05/15</span>
+        <a class="网络 " href="/2019/05/11/tcp-flow-control/" data-tag="tcp,网络" data-author>
+            <span class="post-title" title="tcp flow control">tcp flow control</span>
+            <span class="post-date" title="2019-05-11 18:51:43">2019/05/11</span>
         </a>
         
         <a class="CSAPP " href="/2019/04/03/CSAPP-Bomb-Lab/" data-tag="CSAPP,汇编" data-author>
@@ -418,7 +419,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#tcp','#网络','#链接','#字符串','#算法','#CSAPP','#汇编',],
+            'data': ['#链接','#字符串','#算法','#tcp','#网络','#CSAPP','#汇编',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
@@ -586,6 +587,18 @@
 
 
 
+
+<div class="mobile-menus-out">
+
+</div>
+<div class="mobile-menus">
+    
+    
+    <a class="dynamic-menu site_url" href="/photo">相册</a>
+    
+    
+    
+</div>
 
 
 </html>
