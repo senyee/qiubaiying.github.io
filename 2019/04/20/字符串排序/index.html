@@ -1,205 +1,760 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content>
-    <meta name="keyword" content>
-    <link rel="shortcut icon" href="/img/favicon.ico">
+  <meta charset="utf-8">
+  <title>字符串排序 | Hexo</title>
+  <meta name="keywords" content=" 字符串 , 算法 ">
+  <meta name="description" content="字符串排序 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="我的一点记录">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About">
+<meta property="og:url" content="http://senyee.top/about/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="我的一点记录">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-31T16:40:22.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="About">
+<meta name="twitter:description" content="我的一点记录">
 
-    <title>
-        
-        字符串排序 - Seny&#39;s Blog
-        
-    </title>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/aircloud.css">
-    <link rel="stylesheet" href="/css/gitment.css">
-    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
-    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
-    <!-- ga & ba script hoook -->
-    <script></script>
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
 </head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
 
 <body>
-
-<div class="site-nav-toggle" id="site-nav-toggle">
-    <button>
-        <span class="btn-bar"></span>
-        <span class="btn-bar"></span>
-        <span class="btn-bar"></span>
-    </button>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>Seny</span>
 </div>
 
-<div class="index-about">
-    <i> Weak chicken </i>
-</div>
-
-<div class="index-container">
+<div class="icon">
     
-    <div class="index-left">
         
-<div class="nav" id="nav">
-    <div class="avatar-name">
-        <div class="avatar">
-            <img src="/img/favicon.ico">
-        </div>
-        <div class="name">
-            <i>Seny</i>
-        </div>
-    </div>
-    <div class="contents" id="nav-content">
-        <ul>
-            <li>
-                <a href="/">
-                    <i class="iconfont icon-shouye1"></i>
-                    <span>HOME</span>
-                </a>
-            </li>
-            <li>
-                <a href="/tags">
-                    <i class="iconfont icon-biaoqian1"></i>
-                    <span>TAGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="/archives">
-                    <i class="iconfont icon-guidang2"></i>
-                    <span>ARCHIVES</span>
-                </a>
-            </li>
-            <li>
-                <a href="/about/">
-                    <i class="iconfont icon-guanyu2"></i>
-                    <span>ABOUT</span>
-                </a>
+    
+        
+        <a title="github" href="https://github.com/senyee" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(8)</small></div></li>
+    
+        
+            
+            <li><div data-rel="程序基础">程序基础<small>(3)</small></div>
+                
             </li>
             
-            <li>
-                <a id="search">
-                    <i class="iconfont icon-sousuo1"></i>
-                    <span>SEARCH</span>
-                </a>
+        
+    
+        
+            
+            <li><div data-rel="链接与库">链接与库<small>(1)</small></div>
+                
             </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="网络">网络<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="练习">练习<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="CSAPP">CSAPP<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about site_url" href="/about">关于</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="8">
+<input type="hidden" id="yelog_site_word_count" value="6.4k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
             
         </ul>
     </div>
-    
-        <div id="toc" class="toc-article">
-    
 </div>
-    
-</div>
-
-
-<div class="search-field" id="search-field">
-    <div class="search-container">
-        <div class="search-input">
-            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
-            <input id="search-input">
-            <span id="begin-search">search</span>
-        </div>
-        <div class="search-result-container" id="search-result-container">
-
-        </div>
-    </div>
-</div>
-        <div class="index-about-mobile">
-            <i> Weak chicken </i>
-        </div>
-    </div>
-    
-    <div class="index-middle">
-        <!-- Main Content -->
-        
-
-
-<div class="post-container">
-    <div class="post-title">
-        字符串排序
-    </div>
-
-    <div class="post-meta">
-        <span class="attr">Post：<span>2019-04-20 02:03:13</span></span>
-        
-        <span class="attr">Tags：/
-        
-        <a class="tag" href="/tags/#字符串" title="字符串">字符串</a>
-        <span>/</span>
-        
-        <a class="tag" href="/tags/#算法" title="算法">算法</a>
-        <span>/</span>
-        
-        
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="以 in: 开头进行全文搜索" autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
         </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
-</span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">链接</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">tcp</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">网络</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">字符串</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">算法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">CSAPP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">汇编</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <div id="local-search-result">
 
     </div>
-    <div class="post-content no-indent">
+    
+    <nav id="title-list-nav">
+        
+        <a class href="/2019/03/31/hello-world/" data-tag data-author>
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-03-31 16:51:59">2019/03/31</span>
+        </a>
+        
+        <a class="程序基础 " href="/2019/05/18/memory-pool/" data-tag data-author>
+            <span class="post-title" title="memory pool">memory pool</span>
+            <span class="post-date" title="2019-05-18 21:03:24">2019/05/18</span>
+        </a>
+        
+        <a class="链接与库 " href="/2019/04/01/obj/" data-tag="链接" data-author>
+            <span class="post-title" title="obj">obj</span>
+            <span class="post-date" title="2019-04-01 01:58:20">2019/04/01</span>
+        </a>
+        
+        <a class="网络 " href="/2019/05/11/tcp-flow-control/" data-tag="tcp,网络" data-author>
+            <span class="post-title" title="tcp flow control">tcp flow control</span>
+            <span class="post-date" title="2019-05-11 18:51:43">2019/05/11</span>
+        </a>
+        
+        <a class="程序基础 " href="/2019/05/18/thread-pool/" data-tag data-author>
+            <span class="post-title" title="thread pool">thread pool</span>
+            <span class="post-date" title="2019-05-18 21:01:36">2019/05/18</span>
+        </a>
+        
+        <a class="程序基础 " href="/2019/05/15/多线程/" data-tag data-author>
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2019-05-15 22:12:02">2019/05/15</span>
+        </a>
+        
+        <a class="练习 " href="/2019/04/20/字符串排序/" data-tag="字符串,算法" data-author>
+            <span class="post-title" title="字符串排序">字符串排序</span>
+            <span class="post-date" title="2019-04-20 02:03:13">2019/04/20</span>
+        </a>
+        
+        <a class="CSAPP " href="/2019/04/03/CSAPP-Bomb-Lab/" data-tag="CSAPP,汇编" data-author>
+            <span class="post-title" title="CSAPP Bomb Lab">CSAPP Bomb Lab</span>
+            <span class="post-date" title="2019-04-03 22:32:09">2019/04/03</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-字符串排序" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">字符串排序</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="练习">练习</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color4">字符串</a>
+            
+            <a href="javascript:" class="color3">算法</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2019-08-03 13:18:10">2019-04-20 02:03</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:526</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
         <blockquote>
 <p>题目描述<br>对输入的多项式字符串进行解析后计算正确数。<br>规则：包含整数字和逗号,结果类型为字符串，从小到大排列，输出数字间用逗号相连，输出缓冲区128；<br>附加规则：识别非法输入如<code>#*</code><br>我这里假定输入不超过128<br>例：<code>int sort(char *in, char *out)</code><br>输入<code>&quot;1,@10,-11,,1#2,3&quot;</code>,输出<code>-11,1,3</code>,计算正确数为<code>3</code>。</p>
 </blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> bool char</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> true 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> false 0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check_first</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> check)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(check != <span class="string">'-'</span> </span><br><span class="line">    &amp;&amp; ( check &lt; <span class="string">'0'</span> || check &gt; <span class="string">'9'</span>) )&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isnum</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="string">'9'</span> &amp;&amp; num &gt;= <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isdot</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> dot)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">','</span> == dot)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mv_index2dot</span><span class="params">(<span class="keyword">char</span> ** <span class="keyword">const</span> s)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *tmp = *s;</span><br><span class="line">    tmp++;</span><br><span class="line">    <span class="keyword">while</span>(*tmp != <span class="string">','</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">'\0'</span> == *tmp)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        tmp ++;</span><br><span class="line">    &#125;</span><br><span class="line">    *tmp = <span class="string">'\0'</span>;</span><br><span class="line">    *s = tmp;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isnumstr</span><span class="params">(<span class="keyword">char</span> ** <span class="keyword">const</span> s)</span></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> ret = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">char</span> *tmp = *s;</span><br><span class="line">    <span class="keyword">if</span>(isdot(*tmp))</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>( check_first(*tmp) )&#123;</span><br><span class="line">        tmp++;</span><br><span class="line">        <span class="keyword">for</span>(;*tmp != <span class="string">','</span> &amp;&amp; *tmp != <span class="string">'\0'</span>; ++tmp)&#123;</span><br><span class="line">            <span class="keyword">if</span>( !isnum(*tmp) )&#123;</span><br><span class="line">                ret = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        ret = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    *tmp = <span class="string">'\0'</span>;</span><br><span class="line">    *s = tmp;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">char</span> *s1, <span class="keyword">char</span> *s2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">'-'</span> == *s1 &amp;&amp; <span class="string">'-'</span> == *s2)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strlen</span>(s1) &gt; <span class="built_in">strlen</span>(s2))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strlen</span>(s1) &lt; <span class="built_in">strlen</span>(s2))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> (- <span class="built_in">strcmp</span>(s1, s2));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">'-'</span> != *s1 &amp;&amp; <span class="string">'-'</span> != *s2)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strlen</span>(s1) &gt; <span class="built_in">strlen</span>(s2))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strlen</span>(s1) &lt; <span class="built_in">strlen</span>(s2))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">strcmp</span>(s1, s2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">'-'</span> == *s1)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sort</span><span class="params">(<span class="keyword">char</span> *in, <span class="keyword">char</span> *out)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *tmp = in;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> *arr_num[<span class="number">128</span>];</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//解析字符串,判断是否正确</span></span><br><span class="line">    <span class="keyword">while</span>(*tmp)&#123;</span><br><span class="line">        arr_num[i] = tmp;</span><br><span class="line">        <span class="keyword">if</span>( isnumstr(&amp;tmp) )&#123;</span><br><span class="line">            cnt ++;</span><br><span class="line">            i ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!isdot(*tmp))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>( !mv_index2dot(&amp;tmp) )</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        tmp ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//冒泡排序</span></span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; cnt<span class="number">-1</span>; ++j)&#123;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; cnt-j<span class="number">-1</span>; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cmp(arr_num[i],arr_num[i+<span class="number">1</span>]) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                tmp = arr_num[i];</span><br><span class="line">                arr_num[i] = arr_num[i+<span class="number">1</span>];</span><br><span class="line">                arr_num[i+<span class="number">1</span>] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; cnt<span class="number">-1</span>; ++i)&#123;</span><br><span class="line">        len += <span class="built_in">sprintf</span>(out+len,<span class="string">"%s,"</span>,arr_num[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    len += <span class="built_in">sprintf</span>(out+len,<span class="string">"%s"</span>,arr_num[i]);</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c[] = <span class="string">"1,@10,-11,,1#2,3"</span>;</span><br><span class="line">    <span class="keyword">char</span> *out = <span class="built_in">malloc</span>( <span class="keyword">sizeof</span>(c) );</span><br><span class="line">    <span class="built_in">memset</span>(out,<span class="number">0</span>,<span class="keyword">sizeof</span>(c));</span><br><span class="line">    <span class="keyword">int</span> cnt;</span><br><span class="line">    cnt = sort(c,out);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"correct num:%d\nsort str: %s\n"</span>,cnt, out);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="c">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
 
-        
-        <br>
-        <div id="comment-container">
-        </div>
-        <div id="disqus_thread"></div>
+#define bool char
+#define true 1
+#define false 0
 
-        <div id="lv-container">
-        </div>
 
+bool check_first(const char check){
+    if(check != &#39;-&#39; 
+    &amp;&amp; ( check &lt; &#39;0&#39; || check &gt; &#39;9&#39;) ){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+bool isnum(const char num){
+    if(num &lt;= &#39;9&#39; &amp;&amp; num &gt;= &#39;0&#39;)
+        return true;
+    else
+        return false;
+}
+
+bool isdot(const char dot){
+    if(&#39;,&#39; == dot)
+        return true;
+    else
+        return false;
+}
+
+bool mv_index2dot(char ** const s){
+    char *tmp = *s;
+    tmp++;
+    while(*tmp != &#39;,&#39;){
+        if(&#39;\0&#39; == *tmp)
+            return false;
+        tmp ++;
+    }
+    *tmp = &#39;\0&#39;;
+    *s = tmp;
+    return true;
+}
+bool isnumstr(char ** const s){
+    bool ret = true;
+    char *tmp = *s;
+    if(isdot(*tmp))
+        return false;
+    if( check_first(*tmp) ){
+        tmp++;
+        for(;*tmp != &#39;,&#39; &amp;&amp; *tmp != &#39;\0&#39;; ++tmp){
+            if( !isnum(*tmp) ){
+                ret = false;
+                break;
+            }
+        }
+    }
+    else
+        ret = false;
+
+    *tmp = &#39;\0&#39;;
+    *s = tmp;
+    return ret;
+}
+
+int cmp(char *s1, char *s2)
+{
+    if(&#39;-&#39; == *s1 &amp;&amp; &#39;-&#39; == *s2){
+        if(strlen(s1) &gt; strlen(s2))
+            return -1;
+        else if(strlen(s1) &lt; strlen(s2))
+            return 1;
+        else
+            return (- strcmp(s1, s2));
+    }
+    else if(&#39;-&#39; != *s1 &amp;&amp; &#39;-&#39; != *s2){
+        if(strlen(s1) &gt; strlen(s2))
+            return 1;
+        else if(strlen(s1) &lt; strlen(s2))
+            return -1;
+        else
+            return strcmp(s1, s2);
+    }
+    else{
+        if(&#39;-&#39; == *s1)
+            return -1;
+        else
+            return 1;
+    }
+}
+
+int sort(char *in, char *out)
+{
+    char *tmp = in;
+    int cnt = 0;
+    char *arr_num[128];
+    int i = 0;
+    int j = 0;
+    //解析字符串,判断是否正确
+    while(*tmp){
+        arr_num[i] = tmp;
+        if( isnumstr(&amp;tmp) ){
+            cnt ++;
+            i ++;
+        }
+        else if(!isdot(*tmp))
+        {
+            if( !mv_index2dot(&amp;tmp) )
+                break;
+        }
+
+        tmp ++;
+    }
+    //冒泡排序
+    for(j = 0; j &lt; cnt-1; ++j){
+        for(i = 0; i &lt; cnt-j-1; ++i){
+            if(cmp(arr_num[i],arr_num[i+1]) &gt; 0){
+                tmp = arr_num[i];
+                arr_num[i] = arr_num[i+1];
+                arr_num[i+1] = tmp;
+            }
+        }
+    }
+    int len = 0;
+    for(i = 0; i &lt; cnt-1; ++i){
+        len += sprintf(out+len,&quot;%s,&quot;,arr_num[i]);
+    }
+    len += sprintf(out+len,&quot;%s&quot;,arr_num[i]);
+    return cnt;
+}
+
+int main()
+{
+    char c[] = &quot;1,@10,-11,,1#2,3&quot;;
+    char *out = malloc( sizeof(c) );
+    memset(out,0,sizeof(c));
+    int cnt;
+    cnt = sort(c,out);
+    printf(&quot;correct num:%d\nsort str: %s\n&quot;,cnt, out);
+    return 0;
+}
+
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 153835017@qq.com </span>
     </div>
-</div>
-
-    </div>
-</div>
+</article>
 
 
-<footer class="footer">
-    <ul class="list-inline text-center">
-        
-        
 
-        
-
-        
-
-        
-
-        
-
-    </ul>
-    
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>字符串排序</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">526</span></p>
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Seny">Seny</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-04-20, 02:03:13</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-03, 13:18:10</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/04/20/字符串排序/" title="字符串排序">http://senyee.top/2019/04/20/字符串排序/</a>
     <p>
-        <span id="busuanzi_container_site_pv">
-            <span id="busuanzi_value_site_pv"></span>PV
-        </span>
-        <span id="busuanzi_container_site_uv">
-            <span id="busuanzi_value_site_uv"></span>UV
-        </span>
-        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
-</footer>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'b19bc5e9d3af41ac905a',
+            clientSecret: '6d7f9a21a008abe882505d4128ad0ecf092104d0',
+            repo: 'BlogTalk',
+            owner: 'senyee',
+            admin: ['senyee'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Seny</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
 
 </body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
 
+<script src="/js/script.js?v=1.0.1"></script>
 <script>
-    // We expose some of the variables needed by the front end
-    window.hexo_search_path = "search.json"
-    window.hexo_root = "/"
-    window.isPost = true
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#链接','#tcp','#网络','#字符串','#算法','#CSAPP','#汇编',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
 </script>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    .post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
 
 
 
