@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>字符串排序 | Seny</title>
-  <meta name="keywords" content=" 字符串 , 算法 ">
-  <meta name="description" content="字符串排序 | Seny">
+  <title>装载 | Seny</title>
+  <meta name="keywords" content=" -装载 -虚拟内存空间分布 ">
+  <meta name="description" content="装载 | Seny">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="gallery">
@@ -293,9 +293,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-字符串排序" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-装载" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">字符串排序</h1>
+        <h1 class="article-title">装载</h1>
     
     <div class="article-meta">
         
@@ -303,28 +303,26 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="练习">练习</a>
+                <a href="javascript:" data-rel="链接与库">链接与库</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color4">字符串</a>
-            
-            <a href="javascript:" class="color3">算法</a>
+            <a href="javascript:" class="color4">-装载 -虚拟内存空间分布</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-08-03 13:18:10">2019-04-20 02:03</time>
+        创建时间:<time class="date" title="更新时间: 2019-08-04 22:40:36">2019-08-04 19:33</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:526</span>
+        <span>字数:451</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -354,7 +352,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、进程虚拟地址空间"><span class="toc-text">一、进程虚拟地址空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PAE-Physical-Address-Extension"><span class="toc-text">PAE(Physical Address Extension)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、装载的方式"><span class="toc-text">二、装载的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、进程的建立"><span class="toc-text">三、进程的建立</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、进程虚拟空间分布"><span class="toc-text">五、进程虚拟空间分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、段地址对齐"><span class="toc-text">六、段地址对齐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、Linux内核装载ELF过程"><span class="toc-text">七、Linux内核装载ELF过程</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -369,154 +367,27 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>题目描述<br>对输入的多项式字符串进行解析后计算正确数。<br>规则：包含整数字和逗号,结果类型为字符串，从小到大排列，输出数字间用逗号相连，输出缓冲区128；<br>附加规则：识别非法输入如<code>#*</code><br>我这里假定输入不超过128<br>例：<code>int sort(char *in, char *out)</code><br>输入<code>&quot;1,@10,-11,,1#2,3&quot;</code>,输出<code>-11,1,3</code>,计算正确数为<code>3</code>。</p>
+        <h3 id="一、进程虚拟地址空间"><a href="#一、进程虚拟地址空间" class="headerlink" title="一、进程虚拟地址空间"></a>一、进程虚拟地址空间</h3><h4 id="PAE-Physical-Address-Extension"><a href="#PAE-Physical-Address-Extension" class="headerlink" title="PAE(Physical Address Extension)"></a>PAE(Physical Address Extension)</h4><ul>
+<li>32位的CPU下，程序能使用的空间能不能超过4GB呢？  </li>
+</ul>
+<p>1.如果指的是虚拟地址空间，是不能访问超过4G的，因为32位读cpu只能使用32的指针。<br>2.Intel自从1995年读PentiumPro CPU开始采用了36位的物理地址，可以访问64GB的物理内存。  </p>
+<ul>
+<li>应用程序如何使用这些大于常规的内存空间呢？  </li>
+</ul>
+<p>1.window：AWE(Address Windowing Extension)<br>2.linux:mmap()系统调用  </p>
+<h3 id="二、装载的方式"><a href="#二、装载的方式" class="headerlink" title="二、装载的方式"></a>二、装载的方式</h3><p>2.1 覆盖装入(Overlay)<br>2.2 页映射(Paging)  </p>
+<h3 id="三、进程的建立"><a href="#三、进程的建立" class="headerlink" title="三、进程的建立"></a>三、进程的建立</h3><p>3.1 创建虚拟地址空间<br>3.2 读取可执行文件头，并且建立虚拟空间与可执行文件的映射关系。<br>进程虚拟空间中的一个段：<br> linux:虚拟内存区域(VMA,Virtual Memort Area):<br> window:虚拟段(Virtual Section)<br> <img src="/source/img/ELF存储空间到内存的映射关系.png" alt="avatar"><br>3.3 将cup指令寄存器设置成可执行文件入口，启动运行。  </p>
+<blockquote>
+<p>页错误(Page Fault)<br>cpu执行时，发现当前为空页面，产生页错误，将控制权交给操作系统，操作系统找到空页面所在的VMA，进而找到相应页在可执行文件中的偏移(根据3.2建立的映射关系)，然后在物理内存中分配一个物理页，建立物理页与虚拟页之间的映射关系，将控制权交还给进程，进程从页错误的位置继续执行  </p>
 </blockquote>
-<pre><code class="c">#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;string.h&gt;
-
-#define bool char
-#define true 1
-#define false 0
-
-
-bool check_first(const char check){
-    if(check != &#39;-&#39; 
-    &amp;&amp; ( check &lt; &#39;0&#39; || check &gt; &#39;9&#39;) ){
-        return false;
-    }
-    else{
-        return true;
-    }
-}
-
-bool isnum(const char num){
-    if(num &lt;= &#39;9&#39; &amp;&amp; num &gt;= &#39;0&#39;)
-        return true;
-    else
-        return false;
-}
-
-bool isdot(const char dot){
-    if(&#39;,&#39; == dot)
-        return true;
-    else
-        return false;
-}
-
-bool mv_index2dot(char ** const s){
-    char *tmp = *s;
-    tmp++;
-    while(*tmp != &#39;,&#39;){
-        if(&#39;\0&#39; == *tmp)
-            return false;
-        tmp ++;
-    }
-    *tmp = &#39;\0&#39;;
-    *s = tmp;
-    return true;
-}
-bool isnumstr(char ** const s){
-    bool ret = true;
-    char *tmp = *s;
-    if(isdot(*tmp))
-        return false;
-    if( check_first(*tmp) ){
-        tmp++;
-        for(;*tmp != &#39;,&#39; &amp;&amp; *tmp != &#39;\0&#39;; ++tmp){
-            if( !isnum(*tmp) ){
-                ret = false;
-                break;
-            }
-        }
-    }
-    else
-        ret = false;
-
-    *tmp = &#39;\0&#39;;
-    *s = tmp;
-    return ret;
-}
-
-int cmp(char *s1, char *s2)
-{
-    if(&#39;-&#39; == *s1 &amp;&amp; &#39;-&#39; == *s2){
-        if(strlen(s1) &gt; strlen(s2))
-            return -1;
-        else if(strlen(s1) &lt; strlen(s2))
-            return 1;
-        else
-            return (- strcmp(s1, s2));
-    }
-    else if(&#39;-&#39; != *s1 &amp;&amp; &#39;-&#39; != *s2){
-        if(strlen(s1) &gt; strlen(s2))
-            return 1;
-        else if(strlen(s1) &lt; strlen(s2))
-            return -1;
-        else
-            return strcmp(s1, s2);
-    }
-    else{
-        if(&#39;-&#39; == *s1)
-            return -1;
-        else
-            return 1;
-    }
-}
-
-int sort(char *in, char *out)
-{
-    char *tmp = in;
-    int cnt = 0;
-    char *arr_num[128];
-    int i = 0;
-    int j = 0;
-    //解析字符串,判断是否正确
-    while(*tmp){
-        arr_num[i] = tmp;
-        if( isnumstr(&amp;tmp) ){
-            cnt ++;
-            i ++;
-        }
-        else if(!isdot(*tmp))
-        {
-            if( !mv_index2dot(&amp;tmp) )
-                break;
-        }
-
-        tmp ++;
-    }
-    //冒泡排序
-    for(j = 0; j &lt; cnt-1; ++j){
-        for(i = 0; i &lt; cnt-j-1; ++i){
-            if(cmp(arr_num[i],arr_num[i+1]) &gt; 0){
-                tmp = arr_num[i];
-                arr_num[i] = arr_num[i+1];
-                arr_num[i+1] = tmp;
-            }
-        }
-    }
-    int len = 0;
-    for(i = 0; i &lt; cnt-1; ++i){
-        len += sprintf(out+len,&quot;%s,&quot;,arr_num[i]);
-    }
-    len += sprintf(out+len,&quot;%s&quot;,arr_num[i]);
-    return cnt;
-}
-
-int main()
-{
-    char c[] = &quot;1,@10,-11,,1#2,3&quot;;
-    char *out = malloc( sizeof(c) );
-    memset(out,0,sizeof(c));
-    int cnt;
-    cnt = sort(c,out);
-    printf(&quot;correct num:%d\nsort str: %s\n&quot;,cnt, out);
-    return 0;
-}
-
-</code></pre>
+<h3 id="五、进程虚拟空间分布"><a href="#五、进程虚拟空间分布" class="headerlink" title="五、进程虚拟空间分布"></a>五、进程虚拟空间分布</h3><ul>
+<li>Segment,一个segment包含多个属性相似的section，映射到一个VMA   </li>
+<li>堆和栈：在进程虚拟空间中以VMA的形式存在，这种VMA叫匿名虚拟内存区域(Anonymous Virtual Memory Area)</li>
+</ul>
+<h3 id="六、段地址对齐"><a href="#六、段地址对齐" class="headerlink" title="六、段地址对齐"></a>六、段地址对齐</h3><h3 id="七、Linux内核装载ELF过程"><a href="#七、Linux内核装载ELF过程" class="headerlink" title="七、Linux内核装载ELF过程"></a>七、Linux内核装载ELF过程</h3><p>。。。</p>
+<blockquote>
+<p>《程序员的自我修养》</p>
+</blockquote>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 153835017@qq.com </span>
@@ -526,12 +397,12 @@ int main()
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>字符串排序</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">526</span></p>
+    <p><span class="copy-title">文章标题:</span>装载</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">451</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Seny">Seny</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-04-20, 02:03:13</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-03, 13:18:10</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/04/20/字符串排序/" title="字符串排序">http://senyee.top/2019/04/20/字符串排序/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-04, 19:33:09</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-04, 22:40:36</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/04/装载/" title="装载">http://senyee.top/2019/08/04/装载/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
